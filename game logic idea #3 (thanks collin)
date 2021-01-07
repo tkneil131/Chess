@@ -14,7 +14,7 @@ whitepawns = {
 
 blackpawns = {
     'bp1': {'xpos': 1, 'ypos': 7},
-    'bp2': {'xpos': 2, 'ypos': 7},
+    'bp2': {'xpos': 2, 'ypos': 3}, # I changed this so I could test a hit! - collin
     'bp3': {'xpos': 3, 'ypos': 7},
     'bp4': {'xpos': 4, 'ypos': 7},
     'bp5': {'xpos': 5, 'ypos': 7},
@@ -45,13 +45,74 @@ def chess():
             while True:
 # this is about where i'm getting completely lost
                 if UserInputAttack == 'y':
-                    if blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] + 1:
+                    #**************************************
+                    # Start of what I added -collin
+                    #**************************************
+                    # assign current piece position to x1 and y1
+                    x1 = whitepawns[UserInputPiece]['xpos']
+                    y1 = whitepawns[UserInputPiece]['ypos']
+                
+                    # Loops through every piece and puts coordinates into variable
+                    # Then compares the variable of each black piece to the piece being moved.
+                    for key in blackpawns:
+                        # Assign current piece position for this iteration
+                        x2 = blackpawns[key]['xpos']
+                        y2 = blackpawns[key]['ypos']
+                        #piece_pos = [x2,y2]
+                          
+                        #***************************
+                        # Current Position of wp1
+                        # 0 1 2 3 4 5 6 7 
+                        # 1   X
+                        # 2
+                        # 3
+                        # 4
+                        # 5
+                        # 6
+                        # 7
+
+                        #***************************
+                        # Position After Moving Diagnolly Right (x-1, y+1)
+                        # 0 1 2 3 4 5 6 7 
+                        # 1 
+                        # 2 X
+                        # 3
+                        # 4
+                        # 5
+                        # 6
+                        # 7
+ 
+                        #***************************
+                        # Position After Moving Diagnolly Left (x+1, y+1)
+                        # 0 1 2 3 4 5 6 7 
+                        # 1 
+                        # 2     X
+                        # 3
+                        # 4
+                        # 5
+                        # 6
+                        # 7
+
+                        # Check if piece for this iteration is in hitting position
+                        # if move diagonally left
+                        if (x1+1) == (x2) and (y1+UserInputMove) == (y2):
+                            print("hit: there's a piece in this position")
+                        # if move diagonally right
+                        elif (x1-1) == x2 and (y1+UserInputMove) == (y2):
+                            print("hit: there's a piece in this position")
+                    
+                    #****************************
+                    # End of what I added -collin
+                    #****************************
+                    
+                    
+                    if blackpawns['bp1']['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['bp1']['xpos'] == whitepawns[UserInputPiece]['ypos'] + 1:
                         whitepawns[UserInputPiece]['ypos'] += 1
                         whitepawns[UserInputPiece]['xpos'] += 1
                         print("Moving", UserInputPiece, "to", whitepawns[UserInputPiece])
                         turn += 1
                         break
-                    elif blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] - 1:
+                    elif blackpawns['bp1']['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['bp1']['xpos'] == whitepawns[UserInputPiece]['ypos'] - 1:
                         whitepawns[UserInputPiece]['ypos'] += 1
                         whitepawns[UserInputPiece]['xpos'] -= 1
                         print("Moving", UserInputPiece, "to", whitepawns[UserInputPiece])
