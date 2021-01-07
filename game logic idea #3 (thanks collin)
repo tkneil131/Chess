@@ -43,7 +43,25 @@ def chess():
             UserInputAttack = str(input("Would you like to attack? (y/n) "))
 
             while True:
-                if UserInputMove == 1:
+
+                if UserInputAttack == 'y':
+                    if blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] + 1:
+                        whitepawns[UserInputPiece]['ypos'] += 1
+                        whitepawns[UserInputPiece]['xpos'] += 1
+                        print("Moving", UserInputPiece, "to", whitepawns[UserInputPiece])
+                        turn += 1
+                        break
+                    elif blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] - 1:
+                        whitepawns[UserInputPiece]['ypos'] += 1
+                        whitepawns[UserInputPiece]['xpos'] -= 1
+                        print("Moving", UserInputPiece, "to", whitepawns[UserInputPiece])
+                        turn += 1
+                        break
+                    else:
+                        print("You can't attack right now!")
+                        break
+
+                elif UserInputMove == 1:
                     print("Moving one place. ")
                     whitepawns[UserInputPiece]['ypos'] += 1
                     print("position of", UserInputPiece, "=", whitepawns[UserInputPiece])
@@ -57,22 +75,6 @@ def chess():
                     turn += 1
                     break
 
-                elif UserInputAttack == 'y':
-                    if blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and \
-                            blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] + 1:
-                        whitepawns[UserInputPiece]['ypos'] += 1
-                        whitepawns[UserInputPiece]['xpos'] += 1
-                        print("Moving", UserInputPiece, "to", whitepawns[UserInputPiece])
-                        break
-                    elif blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and \
-                            blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] - 1:
-                        whitepawns[UserInputPiece]['ypos'] += 1
-                        whitepawns[UserInputPiece]['xpos'] -= 1
-                        print("Moving", UserInputPiece, "to", whitepawns[UserInputPiece])
-                        break
-                    else:
-                        print("You can't attack right now!")
-                        break
                 else:
                     print("Invalid amount of moves, please try again. ")
                     break
