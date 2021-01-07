@@ -1,0 +1,104 @@
+wp1 = {
+    'xpos': 1,
+    'ypos': 2
+    }
+wp2 = {
+    'xpos': 2,
+    'ypos': 2
+    }
+wp3 = {
+    'xpos': 3,
+    'ypos': 2
+}
+bp1 = {
+    'xpos': 1,
+    'ypos': 7
+}
+bp2 = {
+    'xpos': 2,
+    'ypos': 7
+}
+bp3 = {
+    'xpos': 3,
+    'ypos': 7
+}
+
+white = {
+    'wp1': wp1,
+    'wp2': wp2,
+    'wp3': wp3
+}
+
+black = {
+    'bp1': bp1,
+    'bp2': bp2,
+    'bp3': bp3
+}
+
+turn = 0
+
+while True:
+
+    while True:
+
+        while turn == 0:
+            UserInputPiece = str(input("What piece would you like to move: "))
+            UserInputPlace = int(input("How many spaces would you like to move: "))
+            UserInputAttack = str(input("Would you like to attack an enemy piece (yes/no) "))
+            while UserInputPiece == 'wp1':
+                if wp1['ypos'] == 2:
+                    if UserInputPlace == 2:
+                        wp1['ypos'] += 2
+                        break
+                    elif UserInputPlace == 1:
+                        wp1['ypos'] +=1
+                        break
+                    else:
+                        print("You must enter either 1 or 2")
+                        break
+                else:
+                    UserInputPlace = input("Where would you like to move: ")
+                    wp1['ypos'] += 1
+                    break
+
+            while UserInputPiece == 'wp2':
+                if wp2['ypos'] == 2:
+                    if UserInputPlace == 2:
+                        wp2['ypos'] += 2
+                        break
+                    elif UserInputPlace == 1:
+                        wp2['ypos'] +=1
+                        break
+                    elif UserInputPlace == 1 and UserInputAttack == 'yes':
+                        AttackDirPawn = input('attack left or attack right? ')
+                        if AttackDirPawn == 'left':
+                            wp2['xpos'] -= 1
+                            wp2['ypos'] += 1
+                             
+                            break
+                        else:
+                            wp2['xpos'] += 1
+                            wp2['ypos'] += 1
+                    else:
+                        print("You must enter either 1 or 2")
+                        break
+                else:
+                    UserInputPlace = input("Where would you like to move: ")
+                    wp1['ypos'] += 1
+                    break
+
+            while UserInputPiece == 'wp3':
+                if wp3['ypos'] == 2:
+                    if UserInputPlace == 2:
+                        wp3['ypos'] += 2
+                        break
+                    elif UserInputPlace == 1:
+                        wp3['ypos'] +=1
+                        break
+                    else:
+                        print("You must enter either 1 or 2")
+                        break
+                else:
+                    UserInputPlace = input("Where would you like to move: ")
+                    wp3['ypos'] += 1
+                    break
