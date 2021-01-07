@@ -43,7 +43,7 @@ def chess():
             UserInputAttack = str(input("Would you like to attack? (y/n) "))
 
             while True:
-
+# this is about where i'm getting completely lost
                 if UserInputAttack == 'y':
                     if blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] + 1:
                         whitepawns[UserInputPiece]['ypos'] += 1
