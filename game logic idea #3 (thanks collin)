@@ -45,13 +45,13 @@ def chess():
             while True:
 # this is about where i'm getting completely lost
                 if UserInputAttack == 'y':
-                    if blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] + 1:
+                    if blackpawns['bp1']['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['bp1']['xpos'] == whitepawns[UserInputPiece]['ypos'] + 1:
                         whitepawns[UserInputPiece]['ypos'] += 1
                         whitepawns[UserInputPiece]['xpos'] += 1
                         print("Moving", UserInputPiece, "to", whitepawns[UserInputPiece])
                         turn += 1
                         break
-                    elif blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] - 1:
+                    elif blackpawns['bp1']['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and blackpawns['bp1']['xpos'] == whitepawns[UserInputPiece]['ypos'] - 1:
                         whitepawns[UserInputPiece]['ypos'] += 1
                         whitepawns[UserInputPiece]['xpos'] -= 1
                         print("Moving", UserInputPiece, "to", whitepawns[UserInputPiece])
