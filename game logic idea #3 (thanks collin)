@@ -1,0 +1,108 @@
+
+moveto = {'boardX': 0, 'boardY': 0}
+
+whitepawns = {
+    'wp1': {'xpos': 1, 'ypos': 2},
+    'wp2': {'xpos': 2, 'ypos': 2},
+    'wp3': {'xpos': 3, 'ypos': 2},
+    'wp4': {'xpos': 4, 'ypos': 2},
+    'wp5': {'xpos': 5, 'ypos': 2},
+    'wp6': {'xpos': 6, 'ypos': 2},
+    'wp7': {'xpos': 7, 'ypos': 2},
+    'wp8': {'xpos': 8, 'ypos': 2}
+}
+
+blackpawns = {
+    'bp1': {'xpos': 1, 'ypos': 7},
+    'bp2': {'xpos': 2, 'ypos': 7},
+    'bp3': {'xpos': 3, 'ypos': 7},
+    'bp4': {'xpos': 4, 'ypos': 7},
+    'bp5': {'xpos': 5, 'ypos': 7},
+    'bp6': {'xpos': 6, 'ypos': 7},
+    'bp7': {'xpos': 7, 'ypos': 7},
+    'bp8': {'xpos': 8, 'ypos': 7}
+}
+
+
+def chess():
+
+    turn = 0
+
+    while True:
+
+        while turn == 0:
+
+            UserInputPiece = str(input("What piece would you like to move White: "))
+
+            while UserInputPiece not in whitepawns.keys():
+                print("Sorry I don't understand what piece you meant")
+                UserInputPiece = str(input("what piece would you like to move: "))
+
+            UserInputMove = int(input("How many places would you like to move: "))
+
+            UserInputAttack = str(input("Would you like to attack? (y/n) "))
+
+            while True:
+                if UserInputMove == 1:
+                    print("Moving one place. ")
+                    whitepawns[UserInputPiece]['ypos'] += 1
+                    print("position of", UserInputPiece, "=", whitepawns[UserInputPiece])
+                    turn += 1
+                    break
+
+                elif whitepawns[UserInputPiece]['ypos'] <= 2 and UserInputMove == 2:
+                    print("Moving 2 places")
+                    whitepawns[UserInputPiece]['ypos'] += 2
+                    print("position of", UserInputPiece, "=", whitepawns[UserInputPiece])
+                    turn += 1
+                    break
+
+                elif UserInputAttack == 'y':
+                    if blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and \
+                            blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] + 1:
+                        whitepawns[UserInputPiece]['ypos'] += 1
+                        whitepawns[UserInputPiece]['xpos'] += 1
+                        print("Moving", UserInputPiece, "to", whitepawns[UserInputPiece])
+                        break
+                    elif blackpawns.keys['ypos'] == whitepawns[UserInputPiece]['ypos'] + 1 and \
+                            blackpawns['xpos'] == whitepawns[UserInputPiece]['ypos'] - 1:
+                        whitepawns[UserInputPiece]['ypos'] += 1
+                        whitepawns[UserInputPiece]['xpos'] -= 1
+                        print("Moving", UserInputPiece, "to", whitepawns[UserInputPiece])
+                        break
+                    else:
+                        print("You can't attack right now!")
+                        break
+                else:
+                    print("Invalid amount of moves, please try again. ")
+                    break
+
+        while turn == 1:
+            UserInputPiece = str(input("What piece would you like to move Black: "))
+
+            while UserInputPiece not in blackpawns.keys():
+                print("Sorry I don't understand what piece you meant")
+                UserInputPiece = str(input("what piece would you like to move: "))
+
+            UserInputMove = int(input("How many places would you like to move: "))
+
+            while True:
+                if UserInputMove == 1:
+                    print("Moving one place. ")
+                    blackpawns[UserInputPiece]['ypos'] -= 1
+                    print("position of", UserInputPiece, "=", blackpawns[UserInputPiece])
+                    turn -= 1
+                    break
+
+                elif blackpawns[UserInputPiece]['ypos'] >= 7 and UserInputMove == 2:
+                    print("Moving 2 places")
+                    blackpawns[UserInputPiece]['ypos'] -= 2
+                    print("position of", UserInputPiece, "=", blackpawns[UserInputPiece])
+                    turn -= 1
+                    break
+
+                else:
+                    print("Invalid amount of moves, please try again. ")
+                    break
+
+chess()
